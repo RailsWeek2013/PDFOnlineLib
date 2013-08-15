@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815085208) do
+ActiveRecord::Schema.define(version: 20130815124814) do
+
+  create_table "favorites", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id_id"
+    t.integer  "pdf_file_id_id"
+  end
+
+  add_index "favorites", ["pdf_file_id_id"], name: "index_favorites_on_pdf_file_id_id"
+  add_index "favorites", ["user_id_id"], name: "index_favorites_on_user_id_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
