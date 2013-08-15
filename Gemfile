@@ -33,6 +33,9 @@ gem "carrierwave", "~> 0.9.0"
 #Easy upload management for ActiveRecord
 gem "paperclip", "~> 3.5.1"
 
+#Flexible authentication solution for Rails with Warden
+gem "devise", "~> 3.0.2"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
