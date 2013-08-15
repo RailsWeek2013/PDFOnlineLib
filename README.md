@@ -28,6 +28,8 @@ Wörtersuche in PDFs
 Gems:
 Devise
 AuthLogic
+paperclip
+carrierwave
 
 Authors:
 Alex Hollweg	alexhollweg@t-online.de
