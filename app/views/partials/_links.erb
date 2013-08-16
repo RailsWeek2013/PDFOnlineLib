@@ -1,7 +1,8 @@
 <p>
-	<% if controller_name != "users"%>
+	<% if user_signed_in? && request.original_fullpath != "/profile"%>
 	<%= link_to "Home" , user_root_path %>
-	<%else%>
+	<%end%>
+	<% if request.original_fullpath != "/"%>
 	<%= link_to "Main" , root_path %>
 	<%end%>
 	<% if user_signed_in? %>
