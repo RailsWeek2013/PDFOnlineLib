@@ -1,5 +1,6 @@
 PdfLib::Application.routes.draw do
   devise_for :users
+  get "profile" => "users#profile", as: "user_root"
 
   root to: "pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
