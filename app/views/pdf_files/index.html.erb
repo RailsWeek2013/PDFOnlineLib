@@ -1,0 +1,29 @@
+<h1>Listing pdf_files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Pdf</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pdf_files.each do |pdf_file| %>
+      <tr>
+        <td><%= pdf_file.title %></td>
+        <td><%= pdf_file.pdf %></td>
+        <td><%= link_to 'Show', pdf_file %></td>
+        <td><%= link_to 'Edit', edit_pdf_file_path(pdf_file) %></td>
+        <td><%= link_to 'Destroy', pdf_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pdf file', new_pdf_file_path %>

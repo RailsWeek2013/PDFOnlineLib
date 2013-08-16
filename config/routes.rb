@@ -1,4 +1,11 @@
 PdfLib::Application.routes.draw do
+  resources :pdf_files
+
+  resources :posts
+ 
+  root to: "startseite#index"
+  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

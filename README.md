@@ -6,7 +6,7 @@ A small online library for pdf-texts.
 Features:
 
 Core:
-PDFs hochladen, downloaden, (per Viewer ansehen)
+0. PDFs hochladen, downloaden, (per Viewer ansehen)
 
 0. Userverwaltung
 	- Favoriten verwalten
