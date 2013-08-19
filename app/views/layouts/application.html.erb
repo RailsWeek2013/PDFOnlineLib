@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
+<div id="header">
 
 	<title>PDF - <%= @title %></title>
 
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
-</head>
-<body>
+</div>
+<div id = "body">
 
 
 	<% if flash[:notice] %>
@@ -31,8 +31,8 @@
 		</div>
 	</div>
 
-
-	<p>&copy 2013 Alex Hollweg, Sebastian Sp&auml;nig
-
-	</body>
-</html>
+	<div id="footer">
+		<p>&copy 2013 Alex Hollweg, Sebastian Sp&auml;nig
+		</div>
+	</div>
+	</html>
