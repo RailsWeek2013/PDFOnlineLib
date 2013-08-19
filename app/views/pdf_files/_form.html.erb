@@ -1,28 +1,35 @@
 <%= form_for(@pdf_file, multipart: true) do |f| %>
-  <% if @pdf_file.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pdf_file.errors.count, "error") %> prohibited this pdf_file from being saved:</h2>
+<% if @pdf_file.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@pdf_file.errors.count, "error") %> prohibited this pdf_file from being saved:</h2>
 
-      <ul>
-      <% @pdf_file.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @pdf_file.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :pdf %><br>
-    <%= f.file_field :pdf %>
-  </div>
+<div class="field">
+  <%= f.label :title %><br>
+  <%= f.text_field :title %>
+</div>
+<div class="field">
+  <%= f.label :pdf %><br>
+  <%= f.file_field :pdf %>
+</div>
 
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= label_tag(:flag_a, "public") %>
+<%= f.radio_button(:flag, "public") %>
+<%= label_tag(:flag_b, "private") %>
+<%= f.radio_button(:flag, "private") %>
+
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819101319) do
+ActiveRecord::Schema.define(version: 20130819131544) do
 
   create_table "favorites", force: true do |t|
     t.datetime "created_at"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20130819101319) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "flag"
   end
 
   add_index "pdf_files", ["user_id"], name: "index_pdf_files_on_user_id"

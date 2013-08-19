@@ -76,6 +76,6 @@ class PdfFilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_file_params
-      params.require(:pdf_file).permit(:title, :pdf, :image, :user_id)
+      params.require(:pdf_file).permit(:title, :pdf, :flag, :user_id)
     end
 end
