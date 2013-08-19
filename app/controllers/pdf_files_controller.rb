@@ -1,10 +1,11 @@
 class PdfFilesController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_pdf_file, only: [:show, :edit, :update, :download, :destroy]
 
   # GET /pdf_files
   # GET /pdf_files.json
   def index
-    @pdf_files = PdfFile.all
+    @pdf_files = PdfFile.where("user_id = #{current_user.id}")
   end
 
   # GET /pdf_files/1
@@ -24,6 +25,7 @@ class PdfFilesController < ApplicationController
   # POST /pdf_files
   # POST /pdf_files.json
   def create
+    @user = User.find(current_user)
     @pdf_file = PdfFile.new(pdf_file_params)
 
     respond_to do |format|
@@ -74,6 +76,6 @@ class PdfFilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_file_params
-      params.require(:pdf_file).permit(:title, :pdf, :image)
+      params.require(:pdf_file).permit(:title, :pdf, :image, :user_id)
     end
 end

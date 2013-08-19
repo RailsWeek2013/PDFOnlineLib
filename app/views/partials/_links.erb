@@ -8,6 +8,7 @@
 	<% if user_signed_in? %>
 	<%= link_to "Logout" , destroy_user_session_path, method: :delete %>
 	<%= link_to "Edit Profile" , edit_user_registration_path %>
+	<%= link_to "View PDF-Files" , pdf_files_path %>
 	<%= "Currently logged in as: #{current_user.user_name}" %>
 	<% else %>
 	<%= link_to "Login" , new_user_session_path %> <%= link_to "Register" , new_user_registration_path%>
