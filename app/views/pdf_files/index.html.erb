@@ -18,6 +18,7 @@
         <td><%= pdf_file.pdf %></td>
         <td><%= link_to 'Show', pdf_file %></td>
         <td><%= link_to 'Edit', edit_pdf_file_path(pdf_file) %></td>
+        <td><%= link_to 'Download', pdf_file.pdf_url %></td>
         <td><%= link_to 'Destroy', pdf_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

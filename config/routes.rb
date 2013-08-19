@@ -1,9 +1,10 @@
 PdfLib::Application.routes.draw do
+  get "pdf_files/download/:id" => "pdf_files#download", as: "pdf_download"
   resources :pdf_files
-
-  resources :posts
  
   root to: "startseite#index"
+ 
+  
   
 
   # The priority is based upon order of creation: first created -> highest priority.

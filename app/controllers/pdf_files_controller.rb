@@ -1,5 +1,5 @@
 class PdfFilesController < ApplicationController
-  before_action :set_pdf_file, only: [:show, :edit, :update, :destroy]
+  before_action :set_pdf_file, only: [:show, :edit, :update, :download, :destroy]
 
   # GET /pdf_files
   # GET /pdf_files.json
@@ -49,6 +49,11 @@ class PdfFilesController < ApplicationController
         format.json { render json: @pdf_file.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  
+  def download
+      send_file @pdf_file.pdf
   end
 
   # DELETE /pdf_files/1
