@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>PDF - <%= @title %></title>
+
 	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 </head>
 <body>
+
+
+	<% if flash[:notice] %>
+	<p id="notice">
+		<%= flash[:notice] %>
+	</p>
+	<% end %>
+	<% if flash[:alert] %>
+	<p id="alert" >
+		<%= flash[:alert] %>
+	</p>
+	<% end %>
 
 	<div id="container">
 		<div id="header">
@@ -18,5 +32,7 @@
 	</div>
 
 
-</body>
+	<p>&copy 2013 Alex Hollweg, Sebastian Sp&auml;nig
+
+	</body>
 </html>

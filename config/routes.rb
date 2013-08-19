@@ -1,11 +1,12 @@
 PdfLib::Application.routes.draw do
+
   get "pdf_files/download/:id" => "pdf_files#download", as: "pdf_download"
   resources :pdf_files
  
-  root to: "startseite#index"
- 
-  
-  
+  devise_for :users
+  get "profile" => "users#profile", as: "user_root"
+
+  root to: "pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

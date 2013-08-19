@@ -1,0 +1,15 @@
+<p>
+	<% if user_signed_in? && request.original_fullpath != "/profile"%>
+	<%= link_to "Home" , user_root_path %>
+	<%end%>
+	<% if request.original_fullpath != "/"%>
+	<%= link_to "Main" , root_path %>
+	<%end%>
+	<% if user_signed_in? %>
+	<%= link_to "Logout" , destroy_user_session_path, method: :delete %>
+	<%= link_to "Edit Profile" , edit_user_registration_path %>
+	<%= "Currently logged in as: #{current_user.user_name}" %>
+	<% else %>
+	<%= link_to "Login" , new_user_session_path %> <%= link_to "Register" , new_user_registration_path%>
+	<% end %>
+</p>
