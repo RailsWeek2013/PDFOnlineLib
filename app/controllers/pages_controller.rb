@@ -3,6 +3,11 @@ class PagesController < ApplicationController
 	end
 
 	def gallery
-		#@pdf_files = PdfFile.where("flag = 'public'")
+		@pdf_files = PdfFile.where("flag = 'public'")
+	end
+	
+
+	def file
+		
 	end
 end

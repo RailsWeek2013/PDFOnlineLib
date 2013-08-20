@@ -1,2 +1,25 @@
-<%= render "partials/links"%>
 <h1>Public PDF Gallery</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Pdf</th>
+      <th>Uploaded by</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pdf_files.each do |pdf_file| %>
+      <tr>
+        <td><%= pdf_file.title %></td>
+        <td><%= pdf_file.pdf %></td>
+        <td><%= User.find(pdf_file.user_id).user_name %></td>
+        <td><%= link_to 'Show', pdf_file %></td>
+        <td><%= link_to 'Download', pdf_file.pdf_url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

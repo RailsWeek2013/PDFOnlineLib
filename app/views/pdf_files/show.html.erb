@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <strong>Title:</strong>
   <%= @pdf_file.title %>
@@ -9,7 +10,10 @@
   <strong>Pdf:</strong>
   <%= @pdf_file.pdf %>
 </p>
-
-
+<% if user_signed_in? && current_user.id = @pdf_file.user_id?%>
 <%= link_to 'Edit', edit_pdf_file_path(@pdf_file) %> |
-<%= link_to 'Back', pdf_files_path %>
+<%= link_to 'Personal Gallery', pdf_files_path %>
+<%= link_to 'Public Gallery', gallery_path %>
+<% else %>
+<%= link_to 'Back', gallery_path %>
+<%end%>

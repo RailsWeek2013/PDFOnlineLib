@@ -6,6 +6,7 @@ PdfLib::Application.routes.draw do
   devise_for :users
   get "profile" => "users#profile", as: "user_root"
   get "gallery" => "pages#gallery", as: "gallery"
+  get "publicfile/:id" => "pages#file", as: "pubfile"
 
   root to: "pages#home"
 
