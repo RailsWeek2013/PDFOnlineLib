@@ -6,30 +6,25 @@ A small online library for pdf-texts.
 Features:
 
 Core:
-0. PDFs hochladen, downloaden, (per Viewer ansehen)
+0. PDF upload, download
 
-0. Userverwaltung
-	- Favoriten verwalten
+0. Usermanagement
+	- Favorites
 	- User Information
 
-0. PDFs privat/public flaggen
-1. PDFs bewerten
+0. PDF privat/public flagging
+1. PDF rating
 1. Tag Search
 
-2. Rezessionen schreiben
-2. Public PDFs Gallery
+2. Reviews
+2. Public PDF Gallery
 
-
-
-Optional:
-Wörtersuche in PDFs
 
 
 Gems:
 Devise
-AuthLogic
-paperclip
 carrierwave
+ransack
 
 Authors:
 Alex Hollweg	alexhollweg@t-online.de
