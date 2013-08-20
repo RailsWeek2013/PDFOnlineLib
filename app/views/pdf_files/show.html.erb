@@ -10,6 +10,16 @@
   <strong>Pdf:</strong>
   <%= @pdf_file.pdf %>
 </p>
+
+<p>
+  <strong>Uploaded by:</strong>
+  <%= User.find(@pdf_file.user_id).user_name %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @pdf_file.tags %>
+</p>
 <% if user_signed_in? && current_user.id = @pdf_file.user_id?%>
 <%= link_to 'Edit', edit_pdf_file_path(@pdf_file) %> |
 <%= link_to 'Personal Gallery', pdf_files_path %>

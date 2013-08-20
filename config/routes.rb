@@ -7,6 +7,13 @@ PdfLib::Application.routes.draw do
   get "profile" => "users#profile", as: "user_root"
   get "gallery" => "pages#gallery", as: "gallery"
   get "publicfile/:id" => "pages#file", as: "pubfile"
+  post "gallery" => "pages#search", as: "search"
+
+  resources :pages do
+    collection do
+      match 'search' => 'pages#search', via: [:get, :post], as: :search
+    end
+  end
 
   root to: "pages#home"
 
