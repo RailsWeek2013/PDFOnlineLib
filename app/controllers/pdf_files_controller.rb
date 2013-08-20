@@ -1,6 +1,8 @@
 class PdfFilesController < ApplicationController
-  before_filter :authenticate_user!
-  before_action :set_pdf_file, only: [:rate, :show, :edit, :update, :download, :destroy]
+
+  before_filter :authenticate_user!, only: [:edit, :update, :download, :destroy]
+  before_action :set_pdf_file, only: [:show, :rate, :edit, :update, :download, :destroy]
+
 
   # GET /pdf_files
   # GET /pdf_files.json, 
