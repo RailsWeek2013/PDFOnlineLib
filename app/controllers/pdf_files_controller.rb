@@ -1,9 +1,11 @@
 class PdfFilesController < ApplicationController
+
   before_filter :authenticate_user!, only: [:edit, :update, :download, :destroy]
-  before_action :set_pdf_file, only: [:show, :edit, :update, :download, :destroy]
+  before_action :set_pdf_file, only: [:show, :rate, :edit, :update, :download, :destroy]
+
 
   # GET /pdf_files
-  # GET /pdf_files.json
+  # GET /pdf_files.json, 
   def index
     @pdf_files = PdfFile.where("user_id = #{current_user.id}")
   end
@@ -29,14 +31,20 @@ class PdfFilesController < ApplicationController
     @pdf_file = PdfFile.new(pdf_file_params)
 
     respond_to do |format|
-      if @pdf_file.save
-        format.html { redirect_to @pdf_file, notice: 'Pdf file was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @pdf_file }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @pdf_file.errors, status: :unprocessable_entity }
-      end
+      
+        if @pdf_file.save
+          format.html { redirect_to @pdf_file, notice: 'Pdf file was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @pdf_file }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @pdf_file.errors, status: :unprocessable_entity }
+        end
+      
     end
+  end
+
+  def rate 
+
   end
 
   # PATCH/PUT /pdf_files/1
