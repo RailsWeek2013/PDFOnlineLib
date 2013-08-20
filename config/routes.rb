@@ -1,5 +1,5 @@
 PdfLib::Application.routes.draw do
-
+  get "pdf_files/rate/:id" => "pdf_files#rate", as: "pdf_rate"
   get "pdf_files/download/:id" => "pdf_files#download", as: "pdf_download"
   resources :pdf_files
  
@@ -8,6 +8,8 @@ PdfLib::Application.routes.draw do
   get "gallery" => "pages#gallery", as: "gallery"
 
   root to: "pages#home"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
