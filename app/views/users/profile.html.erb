@@ -1,1 +1,37 @@
-<h1><%= "Profile of #{@user}"%></h1>
+<h1><%= "Profile of #{@user.user_name}"%></h1>
+<p>
+	<%= "Username: #{@user.user_name}" %><br />
+	<%= "Email: #{@user.email}" %>
+</p>
+
+<p>	<%= link_to "Edit Profile" , edit_user_registration_path %></p>
+
+<h2>Favorites</h2>
+
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Pdf</th>
+			<th>Uploaded by</th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+	
+		<% @favorites.each do |favorite| %>
+		<% @fav_file = PdfFile.find(favorite.pdf_file_id_id)%>
+		<tr>
+			<td><%= @fav_file.title %></td>
+			<td><%= @fav_file.pdf %></td>
+			<td><%= User.find(@fav_file.user_id).user_name %></td>
+			<td><%= link_to 'Show', @fav_file %></td>
+			<td><%= link_to 'Download', @fav_file.pdf_url %></td>
+			<td><%= link_to 'Unfavorite', unfavorite_path(@fav_file.id, current_user.id) %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

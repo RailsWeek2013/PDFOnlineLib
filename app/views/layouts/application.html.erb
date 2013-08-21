@@ -8,32 +8,34 @@
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 </div>
-<div id = "body">
+<div id = "background">
+	<div id = "body">
 
 
-	<% if flash[:notice] %>
-	<p id="notice">
-		<%= flash[:notice] %>
-	</p>
-	<% end %>
-	<% if flash[:alert] %>
-	<p id="alert" >
-		<%= flash[:alert] %>
-	</p>
-	<% end %>
+		<% if flash[:notice] %>
+		<p id="notice">
+			<%= flash[:notice] %>
+		</p>
+		<% end %>
+		<% if flash[:alert] %>
+		<p id="alert" >
+			<%= flash[:alert] %>
+		</p>
+		<% end %>
 
-	<div id="container">
-		<div id="header">
-			<h1>--awesome pdf library--</h1>
-			<%= render "partials/links"%>
+		<div id="container">
+			<div id="header">
+				<h1>--awesome pdf library--</h1>
+				<%= render "partials/links"%>
+			</div>
+			<div id="content">
+				<%= yield %>
+			</div>
 		</div>
-		<div id="content">
-			<%= yield %>
-		</div>
-	</div>
 
-	<div id="footer">
-		<p>&copy 2013 Alex Hollweg, Sebastian Sp&auml;nig
+		<div id="footer">
+			<p>&copy 2013 Alex Hollweg, Sebastian Sp&auml;nig
+			</div>
 		</div>
 	</div>
 	</html>

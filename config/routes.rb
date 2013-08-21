@@ -1,6 +1,8 @@
 PdfLib::Application.routes.draw do
   get "pdf_files/rate/:id" => "pdf_files#rate", as: "pdf_rate"
   get "pdf_files/download/:id" => "pdf_files#download", as: "pdf_download"
+  get "pdf_files/favorite/:id" => "pdf_files#favorite", as: "favorite"
+  get "pdf_files/unfavorite/:pdf_id, :user_id" => "pdf_files#unfavorite", as: "unfavorite"
   resources :pdf_files
  
   devise_for :users
