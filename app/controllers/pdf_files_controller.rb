@@ -2,6 +2,7 @@ class PdfFilesController < ApplicationController
 
   before_filter :authenticate_user!, only: [:edit, :update, :download, :destroy]
   before_action :set_pdf_file, only: [:show, :rate, :edit, :update, :download, :destroy]
+  
 
 
   # GET /pdf_files
@@ -29,8 +30,8 @@ class PdfFilesController < ApplicationController
   def create
     @user = User.find(current_user)
     @pdf_file = PdfFile.new(pdf_file_params)
-
-    respond_to do |format|
+    
+      respond_to do |format|
       
         if @pdf_file.save
           format.html { redirect_to @pdf_file, notice: 'Pdf file was successfully created.' }
@@ -44,6 +45,26 @@ class PdfFilesController < ApplicationController
   end
 
   def rate 
+    @rating = Rate.new
+    @rating.userid = current_user.id
+    @rating.pdfid = params[:id]
+     respond_to do |format|
+      if Rate.where("userid = ? and pdfid = ?", current_user.id, params[:id]).any?
+        format.html { redirect_to @pdf_file, alert: 'You have already rated!' }
+        format.json { render action: 'show', status: :created, location: @pdf_file }
+      else
+      @rating.save
+        if @pdf_file.save
+         format.html { render action: 'rate' }
+         # format.html { redirect_to @pdf_file, notice: 'Pdf file was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @pdf_file }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @pdf_file.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
 
   end
 
@@ -52,6 +73,8 @@ class PdfFilesController < ApplicationController
   def update
     respond_to do |format|
       if @pdf_file.update(pdf_file_params)
+        @pdf_file.counter += 1
+        @pdf_file.save
         format.html { redirect_to @pdf_file, notice: 'Pdf file was successfully updated.' }
         format.json { head :no_content }
       else
@@ -76,6 +99,12 @@ class PdfFilesController < ApplicationController
     end
   end
 
+  def recension
+    respond_to do |format|
+      format.html { render action: 'recension'}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pdf_file
@@ -84,6 +113,9 @@ class PdfFilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_file_params
-      params.require(:pdf_file).permit(:title, :pdf, :flag, :user_id)
+      params.require(:pdf_file).permit(:title, :pdf, :flag, :rating, :counter, :user_id)
     end
+
+
+     
 end

@@ -1,13 +1,23 @@
 <h1> -- rate the pdf -- </h1>
 
-<%= form_for(@pdf_file, multipart: true) do |p|  %>
-<%=		p.label "Bewerten Sie die PDF."   %>
-<%= label_tag(:rate_a, "sehr gut") %>
-<%= p.radio_button(:rate, "1") %>
-<%= label_tag(:rate_b, "gut") %>
-<%= p.radio_button(:rate, "2") %>
+<%= form_for @pdf_file do |p|  %>
+<%=		   %>
+<%= 	label_tag(:flag_a, "Sehr gut") %>
+<%= 	p.radio_button(:rating, calculate_rating(1)) %>
+<%= 	label_tag(:flag_b, "gut") %>
+<%= 	p.radio_button(:rating, calculate_rating(2)) %>
+<%= 	label_tag(:flag_c, "befriedigend") %>
+<%= 	p.radio_button(:rating, calculate_rating(3)) %>
+<%= 	label_tag(:flag_d, "ausreichend") %>
+<%= 	p.radio_button(:rating, calculate_rating(4)) %>
+<%= 	label_tag(:flag_e, "mangelhaft") %>
+<%= 	p.radio_button(:rating, calculate_rating(5)) %>
+<%= 	label_tag(:flag_f, "ungenügend") %>
+<%= 	p.radio_button(:rating, calculate_rating(6)) %>
 
-<%=		p.submit   %>
+<div class="actions">
+ <%= 	p.submit %>
+</div>
 <% end   %>
 
 

@@ -1,0 +1,9 @@
+<h1> -- write da recension -- </h1>
+
+<%= form_for @pdf_file do |x|  %>
+ <div class="field">
+  <%= x.label :title %><br>
+  <%= x.text_area :recension %>
+</div> 
+<%= x.submit %>
+<% end  %>

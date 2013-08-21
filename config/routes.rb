@@ -1,5 +1,6 @@
 PdfLib::Application.routes.draw do
-  get "pdf_files/rate/:id" => "pdf_files#rate", as: "pdf_rate"
+  get "pdf_files/recension/:id" => "pdf_files#recension", as: "recension"
+  get "pdf_files/rate/:id" => "pdf_files#rate", as: "rate"
   get "pdf_files/download/:id" => "pdf_files#download", as: "pdf_download"
   resources :pdf_files
  

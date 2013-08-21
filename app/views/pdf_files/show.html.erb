@@ -9,8 +9,27 @@
 <p>
   <strong>Pdf:</strong>
   <%= @pdf_file.pdf %>
-  <%= link_to 'Rate', pdf_rate_path(@pdf_file) %>
+  <% if @pdf_file.flag == "public"  %>
+  <%= 		link_to 'Rate', rate_path %>
+  <%=     link_to 'Recension', recension_path %>
+  <% end   %>
 </p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @pdf_file.rating %>
+</p>
+
+<p>
+  <strong>Anzahl der Ratings:</strong>
+  <%= @pdf_file.counter %>
+</p>
+
+<p>
+  <strong>Visibility:</strong>
+  <%= @pdf_file.flag %>
+</p>
+
 <% if user_signed_in? && current_user.id = @pdf_file.user_id?%>
 <%= link_to 'Edit', edit_pdf_file_path(@pdf_file) %> |
 <%= link_to 'Personal Gallery', pdf_files_path %>
