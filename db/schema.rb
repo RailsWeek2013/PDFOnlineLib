@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130821141203) do
+
+ActiveRecord::Schema.define(version: 20130822102846) do
+
 
   create_table "favorites", force: true do |t|
     t.datetime "created_at"
@@ -33,7 +35,8 @@ ActiveRecord::Schema.define(version: 20130821141203) do
     t.float    "rating",     default: 0.0
     t.string   "tags",       default: "untagged"
     t.integer  "counter",    default: 0
-    t.text     "recension"
+
+
   end
 
   add_index "pdf_files", ["user_id"], name: "index_pdf_files_on_user_id"
@@ -41,6 +44,14 @@ ActiveRecord::Schema.define(version: 20130821141203) do
   create_table "rates", force: true do |t|
     t.integer  "pdfid"
     t.integer  "userid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recensions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "pdf_file_id"
+    t.string   "recension"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

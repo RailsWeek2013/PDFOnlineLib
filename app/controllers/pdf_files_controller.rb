@@ -109,20 +109,6 @@ end
   end
 
 
-  def recension
-    #@pdf_file = PdfFile.find(params[:id])
-    respond_to do |format|
-      format.html { render action: 'recension'}
-      #format.html { redirect_to recension_path(@pdf_file)}
-    end
-  end
-
-  def view_recensions
-    respond_to do |format|
-      format.html { render action: 'view_recensions'}
-    end
-  end
-
 
   def favorite
     @favorite = Favorite.new
@@ -172,7 +158,7 @@ end
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_file_params
 
-      params.require(:pdf_file).permit(:title, :pdf, :flag, :rating, :counter, :user_id)
+      params.require(:pdf_file).permit(:title, :pdf, :flag, :rating, :counter, :user_id, :tags)
 
     end
 
