@@ -1,10 +1,12 @@
 PdfLib::Application.routes.draw do
+
+  resources :pdf_files
   get "pdf_files/recension/:id" => "pdf_files#recension", as: "recension"
   get "pdf_files/rate/:id" => "pdf_files#rate", as: "rate"
   get "pdf_files/download/:id" => "pdf_files#download", as: "pdf_download"
   get "pdf_files/favorite/:id" => "pdf_files#favorite", as: "favorite"
   get "pdf_files/unfavorite/:pdf_id, :user_id" => "pdf_files#unfavorite", as: "unfavorite"
-  resources :pdf_files
+   get "pdf_files/view_recensions" => "pdf_files#view_recensions", as: "view_recensions"
  
   devise_for :users
   get "profile" => "users#profile", as: "user_root"

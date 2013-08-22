@@ -11,7 +11,7 @@
   <%= @pdf_file.pdf %>
   <% if @pdf_file.flag == "public"  %>
   <%= 		link_to 'Rate', rate_path %>
-  <%=     link_to 'Recension', recension_path %>
+  <%=     link_to 'Recension', recension_path(@pdf_file) %>
   <% end   %>
 </p>
 

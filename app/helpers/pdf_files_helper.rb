@@ -3,7 +3,7 @@ module PdfFilesHelper
 	  # alt * (3/4) + neu * (1/4)
 	  alt = @pdf_file.rating
 	  neu = rating
-	  anz = @pdf_file.counter+1.0
+	  anz = @pdf_file.counter
 	  erg = 0
 	  
        

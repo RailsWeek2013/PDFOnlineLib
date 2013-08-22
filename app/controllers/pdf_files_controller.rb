@@ -2,7 +2,7 @@ class PdfFilesController < ApplicationController
 
   before_filter :authenticate_user!, only: [:edit, :update, :download, :destroy]
 
-  before_action :set_pdf_file, only: [:show, :rate, :edit, :update, :download, :destroy, :favorite]
+  before_action :set_pdf_file, only: [:show, :rate, :edit, :update, :download, :destroy, :favorite, :recension]
   before_action :set_favorite, only: [:unfavorite]
 
 
@@ -21,19 +21,21 @@ class PdfFilesController < ApplicationController
   # GET /pdf_files/new
   def new
     @pdf_file = PdfFile.new
+
   end
 
   # GET /pdf_files/1/edit
   def edit
   end
 
+  
+
   # POST /pdf_files
   # POST /pdf_files.json
   def create
     @user = User.find(current_user)
     @pdf_file = PdfFile.new(pdf_file_params)
-
-
+    
     respond_to do |format|
 
       if @pdf_file.save
@@ -52,32 +54,34 @@ class PdfFilesController < ApplicationController
     @rating = Rate.new
     @rating.userid = current_user.id
     @rating.pdfid = params[:id]
-     respond_to do |format|
+    respond_to do |format|
       if Rate.where("userid = ? and pdfid = ?", current_user.id, params[:id]).any?
         format.html { redirect_to @pdf_file, alert: 'You have already rated!' }
         format.json { render action: 'show', status: :created, location: @pdf_file }
       else
-      @rating.save
+        @rating.save
         if @pdf_file.save
+         @pdf_file.counter += 1.0
+         @pdf_file.save
          format.html { render action: 'rate' }
          # format.html { redirect_to @pdf_file, notice: 'Pdf file was successfully created.' }
-          format.json { render action: 'show', status: :created, location: @pdf_file }
-        else
-          format.html { render action: 'new' }
-          format.json { render json: @pdf_file.errors, status: :unprocessable_entity }
-        end
+         format.json { render action: 'show', status: :created, location: @pdf_file }
+       else
+        format.html { render action: 'new' }
+        format.json { render json: @pdf_file.errors, status: :unprocessable_entity }
       end
     end
-
-
   end
+
+
+end
 
   # PATCH/PUT /pdf_files/1
   # PATCH/PUT /pdf_files/1.json
   def update
     respond_to do |format|
       if @pdf_file.update(pdf_file_params)
-        @pdf_file.counter += 1
+        
         @pdf_file.save
         format.html { redirect_to @pdf_file, notice: 'Pdf file was successfully updated.' }
         format.json { head :no_content }
@@ -93,6 +97,7 @@ class PdfFilesController < ApplicationController
     send_file @pdf_file.pdf
   end
 
+
   # DELETE /pdf_files/1
   # DELETE /pdf_files/1.json
   def destroy
@@ -105,8 +110,16 @@ class PdfFilesController < ApplicationController
 
 
   def recension
+    #@pdf_file = PdfFile.find(params[:id])
     respond_to do |format|
       format.html { render action: 'recension'}
+      #format.html { redirect_to recension_path(@pdf_file)}
+    end
+  end
+
+  def view_recensions
+    respond_to do |format|
+      format.html { render action: 'view_recensions'}
     end
   end
 
