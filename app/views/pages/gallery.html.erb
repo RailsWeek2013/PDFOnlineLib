@@ -7,7 +7,6 @@
         <td><%= pdf_file.pdf %></td>
         <td><%= User.find(pdf_file.user_id).user_name %></td>
         <td><%= link_to 'Show', pdf_file %></td>
-        <td><%= link_to 'read recension', view_recensions_path %></td>
         <td><%= link_to 'Download', pdf_file.pdf_url %></td>
       </tr>
     <% end %>

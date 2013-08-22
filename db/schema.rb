@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20130822102846) do
-
 
   create_table "favorites", force: true do |t|
     t.datetime "created_at"
@@ -35,8 +33,6 @@ ActiveRecord::Schema.define(version: 20130822102846) do
     t.float    "rating",     default: 0.0
     t.string   "tags",       default: "untagged"
     t.integer  "counter",    default: 0
-
-
   end
 
   add_index "pdf_files", ["user_id"], name: "index_pdf_files_on_user_id"
