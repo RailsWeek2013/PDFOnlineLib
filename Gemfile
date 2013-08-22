@@ -36,6 +36,12 @@ gem "paperclip", "~> 3.5.1"
 #Flexible authentication solution for Rails with Warden
 gem "devise", "~> 3.0.2"
 
+gem "better_errors"
+gem "binding_of_caller"
+
+#Ransack is the successor to the MetaSearch gem. It improves and expands upon MetaSearch's functionality, but does not have a 100%-compatible API.
+gem "ransack", "~> 1.0.0"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

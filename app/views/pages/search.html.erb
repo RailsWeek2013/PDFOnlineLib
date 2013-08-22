@@ -1,0 +1,14 @@
+<%=render "partials/gallery"%>
+
+<tbody>
+    <% @result.each do |result| %>
+      <tr>
+        <td><%= result.title  %></td>
+        <td><%= result.pdf %></td>
+        <td><%= User.find(result.user_id).user_name %></td>
+        <td><%= link_to 'Show', result %></td>
+        <td><%= link_to 'Download', result.pdf_url %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

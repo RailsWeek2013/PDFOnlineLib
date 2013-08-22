@@ -16,6 +16,7 @@
 </p>
 
 <p>
+
   <strong>Rating:</strong>
   <%= @pdf_file.rating %>
 </p>
@@ -28,6 +29,16 @@
 <p>
   <strong>Visibility:</strong>
   <%= @pdf_file.flag %>
+</p>
+
+
+  <strong>Uploaded by:</strong>
+  <%= User.find(@pdf_file.user_id).user_name %>
+</p>
+
+<p>
+  <strong>Tags:</strong>
+  <%= @pdf_file.tags %>
 </p>
 
 <% if user_signed_in? && current_user.id = @pdf_file.user_id?%>

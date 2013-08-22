@@ -12,23 +12,39 @@
 <% end %>
 
 <div class="field">
-  <%= f.label :title %><br>
+  <strong><%= f.label :title %><br></strong>
   <%= f.text_field :title %>
 </div>
 <div class="field">
-  <%= f.label :pdf %><br>
+  <strong><%= f.label :pdf %></strong><br>
   <%= f.file_field :pdf %>
 </div>
 
 <%= f.hidden_field :user_id, :value => current_user.id %>
 
-<%= label_tag(:flag_a, "public") %>
-<%= f.radio_button(:flag, "public") %>
-<%= label_tag(:flag_b, "private") %>
-<%= f.radio_button(:flag, "private") %>
+<div class="field">
+  <table align="center">
+    <th><%= label_tag(:flag_a, "public") %></th>
+    <th></th>
+    <th><%= label_tag(:flag_b, "private") %></th>
+    <tr>
+      <td><%= f.radio_button(:flag, "public") %></td>
+      <td></td>
+      <td><%= f.radio_button(:flag, "private") %></td>
+    </tr>
+  </table>
+</div>
+
 
 <%= f.hidden_field :counter, default: 0 %>
 
+
+<div class="field">
+  <strong><%= label_tag(:tags, "Tags")%></strong>
+  <%="Use [space] to split tags."%><br />
+  <%= f.text_field :tags%><br />
+  <%="Example: 'thriller short_story' (creates 2 tags 'thriller' and 'short_story')"%>
+</div>
 
 
 
