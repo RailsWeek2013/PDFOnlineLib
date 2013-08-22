@@ -1,0 +1,8 @@
+<h1> -- write a recension -- </h1>
+<%= form_for @recension do |x| %>
+ <div class="field">
+  <%= x.text_area :recension %>
+  <%= x.hidden_field :pdf_file_id, :value => params[:id]%>
+</div> 
+<%= x.submit %>
+<% end  %>

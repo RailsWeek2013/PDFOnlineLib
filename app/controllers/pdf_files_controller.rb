@@ -104,13 +104,6 @@ class PdfFilesController < ApplicationController
   end
 
 
-  def recension
-    respond_to do |format|
-      format.html { render action: 'recension'}
-    end
-  end
-
-
   def favorite
     @favorite = Favorite.new
     @favorite.user_id_id = current_user.id
@@ -159,7 +152,7 @@ class PdfFilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_file_params
 
-      params.require(:pdf_file).permit(:title, :pdf, :flag, :rating, :counter, :user_id)
+      params.require(:pdf_file).permit(:title, :pdf, :flag, :rating, :counter, :user_id, :tags)
 
     end
 

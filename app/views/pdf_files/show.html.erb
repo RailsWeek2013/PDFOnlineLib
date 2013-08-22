@@ -11,7 +11,8 @@
   <%= @pdf_file.pdf %>
   <% if @pdf_file.flag == "public"  %>
   <%= 		link_to 'Rate', rate_path %>
-  <%=     link_to 'Recension', recension_path %>
+  <%=     link_to 'Write a Recension', new_recension_path(@pdf_file) %>
+  <%=     link_to 'Show Recensions', show_recension_path(@pdf_file) %>
   <% end   %>
 </p>
 
@@ -22,7 +23,7 @@
 </p>
 
 <p>
-  <strong>Anzahl der Ratings:</strong>
+  <strong>Number of Ratings:</strong>
   <%= @pdf_file.counter %>
 </p>
 

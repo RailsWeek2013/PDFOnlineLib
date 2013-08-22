@@ -1,0 +1,20 @@
+<table>
+	<thead>
+		<tr>
+			<th>User</th>
+			<th>Recension</th>
+			<th></th>
+			
+	</thead>
+
+	<tbody>
+	
+		<% @recensions.each do |recension| %>
+		<tr>
+			<td><%= User.find(recension.user_id).user_name %></td>
+			<td><%= recension.recension %></td>
+			<td><%= link_to "Delete", delete_recension_path(recension.id), method: :delete %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
