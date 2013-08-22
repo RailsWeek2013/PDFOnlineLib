@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-	has_many :pdffiles
-	has_many :pdffiles, through: :favorites
+	has_many :pdf_files
+	has_many :pdf_files, through: :favorites
 	has_many :reviews
 	has_many :pdffiles, through: :rates
 	validates :user_name, uniqueness: true
